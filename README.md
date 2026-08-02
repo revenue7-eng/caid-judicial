@@ -134,6 +134,4 @@ Data collection, the judging pipeline and the statistical analysis are by Andrey
 Andrey Lazarev and Mohammed Zoheb Shaik, "CAID-J v1.0: Configuration-Induced
 Behavioural Shift in Judicial Case Support", 2026. MIT licence.
 
-Study design and battery: M. Z. Shaik. Measurements and analysis: A. Lazarev.
-
 A publication claiming conformance must cite the protocol version and state which MUST clauses, if any, are unmet.
