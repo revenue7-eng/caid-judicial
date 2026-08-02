@@ -1,0 +1,27 @@
+{
+  "run_id": "run_judicial_v1",
+  "battery_version": "CAID-J v1.0",
+  "models": [
+    "z-ai/glm-5.2",
+    "google/gemini-3.5-flash",
+    "moonshotai/kimi-k3",
+    "anthropic/claude-opus-5"
+  ],
+  "conditions": [
+    "neutral",
+    "configured_soft",
+    "configured_terse",
+    "configured_resource",
+    "configured_blunt"
+  ],
+  "replicates": 3,
+  "temperature": 0.7,
+  "max_tokens": 16000,
+  "judges": [
+    "Qwen/Qwen3.5-397B-A17B-FP8",
+    "deepseek-ai/DeepSeek-V4-Pro"
+  ],
+  "judge_temperature": 0.0,
+  "judge_max_tokens": 16000,
+  "note": "Reference run. Judges were run as four separate single-question passes."
+}
