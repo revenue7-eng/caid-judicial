@@ -1,0 +1,32 @@
+{
+  "run_id": "run_wording_144",
+  "collected": "second sitting",
+  "battery_version": "CAID-J v1.0",
+  "models": [
+    "z-ai/glm-5.2",
+    "google/gemini-3.5-flash",
+    "moonshotai/kimi-k3",
+    "anthropic/claude-opus-5"
+  ],
+  "conditions": [
+    "configured_terse",
+    "configured_resource",
+    "configured_blunt"
+  ],
+  "replicates": 3,
+  "temperature": 0.7,
+  "max_tokens": 16000,
+  "answers": 144,
+  "judge_passes": [
+    "A",
+    "B",
+    "C"
+  ],
+  "judges": [
+    "Qwen/Qwen3.5-397B-A17B-FP8",
+    "deepseek-ai/DeepSeek-V4-Pro"
+  ],
+  "judge_temperature": 0.0,
+  "compared_against": "run_base_96 neutral condition",
+  "note": "Added after the first sitting showed that one configured wording cannot support a claim about a class of instructions. Judged with the same single-question instructions."
+}

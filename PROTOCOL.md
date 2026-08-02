@@ -3,7 +3,7 @@
 **Version:** 1.0 (protocol), covering benchmark battery CAID-J v1.x
 **Status:** Normative for runs claiming CAID-J conformance
 **Reference implementation:** this repository (`src/run_benchmark.py`, `src/judge_batch.py`, `src/analyze.py`)
-**Reference results:** `data/runs/run_judicial_v1/` (August 2026, 4 models, 5 conditions, 240 answers, 1440 verdicts), analysis in `REPORT.md`
+**Reference results:** `data/runs/` (August 2026, two collections, 4 models, 5 conditions, 240 answers, 1440 verdicts), analysis in `REPORT.md`
 **Derived from:** the CAID protocol (`revenue7-eng/caid-benchmark`, MIT), which specifies dual-condition behavioural testing for commercial deployments. Section numbering is kept parallel where the requirement is the same.
 
 This document specifies the CAID-J testing protocol so that a run can be executed, audited, or cited independently of this codebase. A deployment or publication may state that "testing follows the CAID-J protocol" if and only if it satisfies every MUST clause below.
@@ -91,7 +91,7 @@ Each response is classified in four independent passes, each asking the judge ex
 
 Conformance rules:
 
-- Each pass MUST be a separate call with its own frozen prompt. A judge asked several of these questions in one call MUST NOT be reported as CAID-J-conformant. In the reference run, giving one judge three labels at once caused it to anchor on section headings rather than content; its verdicts on the hardest measure diverged from a single-question pass in 7% of cases, and in 10% with four labels. All three superseded prompts are published under `data/runs/run_judicial_v1/superseded/` with their raw output and those figures.
+- Each pass MUST be a separate call with its own frozen prompt. A judge asked several of these questions in one call MUST NOT be reported as CAID-J-conformant. In the reference run, giving one judge three labels at once caused it to anchor on section headings rather than content; its verdicts on the hardest measure diverged from a single-question pass in 7% of cases, and in 10% with four labels. All three superseded prompts are published under `data/runs/run_base_96/superseded/` with their raw output and those figures.
 - The judge prompt and judge model MUST be frozen per run and identified in the report. The same judge MUST be used across the whole corpus of a run.
 - The judge MUST NOT be one of the models under test. A judge scoring itself makes any result in its favour worthless. The reference implementation refuses to run in that configuration.
 - A run MUST use at least two independent judge models, from different developers, and MUST report per-measure agreement between them. Agreement measures reproducibility, not correctness.

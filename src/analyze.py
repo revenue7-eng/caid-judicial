@@ -80,14 +80,29 @@ def pair_rates(rows, judge, field, condition, predicate):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--run-id", required=True)
+    ap.add_argument("--run-id", required=True,
+                    help="analysis directory holding verdicts.jsonl")
+    ap.add_argument("--corpus", action="append",
+                    help="collection directory holding responses.jsonl; repeatable. "
+                         "Defaults to the inputs named in the analysis run_config.json, "
+                         "or to --run-id itself if it holds its own responses.")
     args = ap.parse_args()
     run_dir = os.path.join(ROOT, "data", "runs", args.run_id)
 
+    corpora = args.corpus
+    if not corpora:
+        cfg_path = os.path.join(run_dir, "run_config.json")
+        cfg = json.load(open(cfg_path, encoding="utf-8")) if os.path.exists(cfg_path) else {}
+        corpora = cfg.get("inputs") or [args.run_id]
+
     responses = {}
-    for line in open(os.path.join(run_dir, "responses.jsonl"), encoding="utf-8"):
-        r = json.loads(line)
-        responses[r["call_id"]] = r
+    for c in corpora:
+        path = os.path.join(ROOT, "data", "runs", c, "responses.jsonl")
+        if not os.path.exists(path):
+            sys.exit(f"no responses.jsonl in collection {c}")
+        for line in open(path, encoding="utf-8"):
+            r = json.loads(line)
+            responses[r["call_id"]] = r
     verdicts = [json.loads(l) for l in
                 open(os.path.join(run_dir, "verdicts.jsonl"), encoding="utf-8")]
 
@@ -107,8 +122,10 @@ def main():
     combos = len({(r["model"], r["case"], r["condition"]) for r in rows})
     pairs = len({(r["model"], r["case"]) for r in rows})
 
-    print(f"run {args.run_id}: {len(responses)} answers, {len(verdicts)} verdict records, "
-          f"{len(judges)} judges, {combos} combinations, {pairs} pairs per condition")
+    print(f"analysis {args.run_id} over {len(corpora)} collection(s) "
+          f"({', '.join(corpora)}): {len(responses)} answers,")
+    print(f"  {len(verdicts)} verdict records, {len(judges)} judges, "
+          f"{combos} combinations, {pairs} pairs per condition")
     if len(judges) < 2:
         print("[warning] PROTOCOL 5 requires at least two independent judges.")
     if len(configured) < 3:

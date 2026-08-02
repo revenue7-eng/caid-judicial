@@ -1,0 +1,22 @@
+{
+  "analysis_id": "analysis_v1",
+  "inputs": [
+    "run_base_96",
+    "run_wording_144"
+  ],
+  "answers": 240,
+  "verdict_records": 480,
+  "judge_verdicts": 1440,
+  "judges": [
+    "Qwen/Qwen3.5-397B-A17B-FP8",
+    "deepseek-ai/DeepSeek-V4-Pro"
+  ],
+  "judge_temperature": 0.0,
+  "judge_passes": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "note": "Pass D was written last, after it became clear that measuring how much a model advises says nothing about whether the advice is harmful. It was run once over both corpora, which is why it lives here rather than under either collection."
+}

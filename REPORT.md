@@ -2,7 +2,7 @@
 
 Four frontier models under a paired neutral / configured system-prompt design, across four configured wordings of the same intent. Judges: Qwen3.5-397B-A17B-FP8 and DeepSeek-V4-Pro, four single-question passes each, temperature 0.0.
 
-**Run:** `run_judicial_v1` · **Battery:** CAID-J v1.0 (`prompts/judicial_v1.json`) · **Protocol:** CAID-J 1.0
+**Runs:** `run_base_96` and `run_wording_144`, analysed as `analysis_v1` · **Battery:** CAID-J v1.0 (`prompts/judicial_v1.json`) · **Protocol:** CAID-J 1.0
 
 **Conformance:** this run does not claim CAID-J conformance. Two normative clauses are unmet: the judges are not validated against human gold labels (PROTOCOL §5) and the battery contains no allowed-action scenarios, so there is no overrefusal counterweight (PROTOCOL §6). Both gaps are listed under Limitations.
 
@@ -63,7 +63,7 @@ The first judge instruction merged pointing at an outcome with giving procedural
 
 The second instruction added the defence axis alongside, giving the judge three labels in one call. Its verdicts on the hardest measure then diverged from a single-question pass in 10% of cases, and inspection showed the judge quoting section headings rather than the sentences that decided the classification. That is why PROTOCOL §5 requires one question per pass.
 
-All three superseded instructions are published under `data/runs/run_judicial_v1/superseded/`, each with the raw judge output it produced. Divergence against the single-question pass: 7% for the three-label version, 10% for the four-label version. The first, which merged the two kinds of advice into one label, is kept as the clearest demonstration of what saturation does to a per-model ranking.
+All three superseded instructions are published under `data/runs/run_base_96/superseded/`, each with the raw judge output it produced. Divergence against the single-question pass: 7% for the three-label version, 10% for the four-label version. The first, which merged the two kinds of advice into one label, is kept as the clearest demonstration of what saturation does to a per-model ranking.
 
 ---
 
@@ -210,19 +210,20 @@ The defence result comes from cases where the defence is pleaded openly in the m
 |---|---|
 | `prompts/judicial_v1.json` | Frozen battery: cases, defences at issue, five system prompts, user task, policy |
 | `prompts/judge_pass_[ABCD]_*.txt` | Four judge instructions, one question each |
-| `data/runs/run_judicial_v1/passes/` | Raw judge output for the four final passes, 1920 requests |
-| `data/runs/run_judicial_v1/superseded/` | Three discarded judge instructions with their raw output and notes |
-| `data/runs/run_judicial_v1/responses.jsonl` | 240 answers, verbatim, with finish reason and usage |
-| `data/runs/run_judicial_v1/verdicts.jsonl` | 480 records, both judges, all four passes, with key phrases |
-| `data/runs/run_judicial_v1/rows.csv` | One row per answer per judge |
-| `data/runs/run_judicial_v1/summary.csv` | Every metric by judge and condition with shifts, intervals and p |
-| `data/runs/run_judicial_v1/judge_agreement.csv` | Per-measure agreement |
-| `data/runs/run_judicial_v1/run_config.json` | Models, conditions, decoding parameters, judges |
+| `data/runs/*/passes/` | Raw judge output for all four passes, 1920 requests |
+| `data/runs/run_base_96/superseded/` | Three discarded judge instructions with their raw output and notes |
+| `data/runs/run_base_96/responses.jsonl` | 96 answers, first sitting |
+| `data/runs/run_wording_144/responses.jsonl` | 144 answers, second sitting |
+| `data/runs/analysis_v1/verdicts.jsonl` | 480 records, both judges, all four passes, with key phrases |
+| `data/runs/analysis_v1/rows.csv` | One row per answer per judge |
+| `data/runs/analysis_v1/summary.csv` | Every metric by judge and condition with shifts, intervals and p |
+| `data/runs/analysis_v1/judge_agreement.csv` | Per-measure agreement |
+| `data/runs/*/run_config.json` | Models, conditions, decoding parameters, judges, per collection |
 
 ### Recomputing
 
 ```
-python3 src/analyze.py --run-id run_judicial_v1
+python3 src/analyze.py --run-id analysis_v1
 ```
 
 Reads the published responses and verdicts, rewrites the three tables, and prints every number in this report. Standard library only.

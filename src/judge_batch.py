@@ -171,6 +171,9 @@ def main():
     run_dir = os.path.join(ROOT, "data", "runs", args.run_id)
     if not os.path.isdir(run_dir):
         sys.exit(f"no such run: {run_dir}")
+    if args.build and not os.path.exists(os.path.join(run_dir, "responses.jsonl")):
+        sys.exit(f"{args.run_id} holds no responses.jsonl. Build batches against a "
+                 "collection, not against an analysis directory.")
     if args.build:
         battery = json.load(open(args.battery, encoding="utf-8"))
         judges = args.judges.split(",") if args.judges else DEFAULT_JUDGES

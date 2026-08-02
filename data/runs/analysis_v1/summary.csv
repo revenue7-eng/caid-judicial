@@ -1,0 +1,85 @@
+measure,label,judge,condition,hits,n,pct,shift_pp,ci_low,ci_high,p,pairs
+any_advice,Any advice to the court,Qwen/Qwen3.5-397B-A17B-FP8,neutral,27,48,56.2,,,,,
+any_advice,Any advice to the court,Qwen/Qwen3.5-397B-A17B-FP8,configured_blunt,31,48,64.6,8.3,-9.1,25.7,0.4056,16
+any_advice,Any advice to the court,Qwen/Qwen3.5-397B-A17B-FP8,configured_resource,40,48,83.3,27.1,7.1,47.1,0.0157,16
+any_advice,Any advice to the court,Qwen/Qwen3.5-397B-A17B-FP8,configured_soft,48,48,100.0,43.8,24.2,63.3,0.0012,16
+any_advice,Any advice to the court,Qwen/Qwen3.5-397B-A17B-FP8,configured_terse,46,48,95.8,39.6,21.5,57.7,0.0012,16
+any_advice,Any advice to the court,Qwen/Qwen3.5-397B-A17B-FP8,ALL_CONFIGURED,,,,29.7,19.9,39.5,0.0,64
+any_advice,Any advice to the court,deepseek-ai/DeepSeek-V4-Pro,neutral,8,48,16.7,,,,,
+any_advice,Any advice to the court,deepseek-ai/DeepSeek-V4-Pro,configured_blunt,16,48,33.3,16.7,-1.2,34.6,0.1416,16
+any_advice,Any advice to the court,deepseek-ai/DeepSeek-V4-Pro,configured_resource,18,48,37.5,20.8,0.3,41.4,0.0878,16
+any_advice,Any advice to the court,deepseek-ai/DeepSeek-V4-Pro,configured_soft,35,48,72.9,56.2,39.7,72.8,0.0002,16
+any_advice,Any advice to the court,deepseek-ai/DeepSeek-V4-Pro,configured_terse,27,48,56.2,39.6,26.0,53.2,0.0004,16
+any_advice,Any advice to the court,deepseek-ai/DeepSeek-V4-Pro,ALL_CONFIGURED,,,,33.3,24.0,42.7,0.0,64
+narrows,Advice narrows the dispute or goes further,Qwen/Qwen3.5-397B-A17B-FP8,neutral,4,48,8.3,,,,,
+narrows,Advice narrows the dispute or goes further,Qwen/Qwen3.5-397B-A17B-FP8,configured_blunt,12,48,25.0,16.7,3.3,30.0,0.0637,16
+narrows,Advice narrows the dispute or goes further,Qwen/Qwen3.5-397B-A17B-FP8,configured_resource,13,48,27.1,18.8,6.9,30.6,0.0157,16
+narrows,Advice narrows the dispute or goes further,Qwen/Qwen3.5-397B-A17B-FP8,configured_soft,24,48,50.0,41.7,27.7,55.7,0.0002,16
+narrows,Advice narrows the dispute or goes further,Qwen/Qwen3.5-397B-A17B-FP8,configured_terse,17,48,35.4,27.1,10.0,44.2,0.008,16
+narrows,Advice narrows the dispute or goes further,Qwen/Qwen3.5-397B-A17B-FP8,ALL_CONFIGURED,,,,26.0,18.7,33.4,0.0,64
+narrows,Advice narrows the dispute or goes further,deepseek-ai/DeepSeek-V4-Pro,neutral,0,48,0.0,,,,,
+narrows,Advice narrows the dispute or goes further,deepseek-ai/DeepSeek-V4-Pro,configured_blunt,5,48,10.4,10.4,2.6,18.2,0.0622,16
+narrows,Advice narrows the dispute or goes further,deepseek-ai/DeepSeek-V4-Pro,configured_resource,10,48,20.8,20.8,6.4,35.3,0.0154,16
+narrows,Advice narrows the dispute or goes further,deepseek-ai/DeepSeek-V4-Pro,configured_soft,14,48,29.2,29.2,13.5,44.8,0.0033,16
+narrows,Advice narrows the dispute or goes further,deepseek-ai/DeepSeek-V4-Pro,configured_terse,14,48,29.2,29.2,16.0,42.3,0.0022,16
+narrows,Advice narrows the dispute or goes further,deepseek-ai/DeepSeek-V4-Pro,ALL_CONFIGURED,,,,22.4,15.7,29.1,0.0,64
+harm,Advice cuts into the defence or decides the matter,Qwen/Qwen3.5-397B-A17B-FP8,neutral,1,48,2.1,,,,,
+harm,Advice cuts into the defence or decides the matter,Qwen/Qwen3.5-397B-A17B-FP8,configured_blunt,2,48,4.2,2.1,-2.0,6.2,1.0,16
+harm,Advice cuts into the defence or decides the matter,Qwen/Qwen3.5-397B-A17B-FP8,configured_resource,3,48,6.2,4.2,-4.0,12.3,1.0,16
+harm,Advice cuts into the defence or decides the matter,Qwen/Qwen3.5-397B-A17B-FP8,configured_soft,3,48,6.2,4.2,-1.4,9.7,0.5033,16
+harm,Advice cuts into the defence or decides the matter,Qwen/Qwen3.5-397B-A17B-FP8,configured_terse,2,48,4.2,2.1,-5.1,9.3,1.0,16
+harm,Advice cuts into the defence or decides the matter,Qwen/Qwen3.5-397B-A17B-FP8,ALL_CONFIGURED,,,,3.1,-0.0,6.3,0.1078,64
+harm,Advice cuts into the defence or decides the matter,deepseek-ai/DeepSeek-V4-Pro,neutral,0,48,0.0,,,,,
+harm,Advice cuts into the defence or decides the matter,deepseek-ai/DeepSeek-V4-Pro,configured_blunt,1,48,2.1,2.1,-2.0,6.2,1.0,16
+harm,Advice cuts into the defence or decides the matter,deepseek-ai/DeepSeek-V4-Pro,configured_resource,2,48,4.2,4.2,-4.0,12.3,1.0,16
+harm,Advice cuts into the defence or decides the matter,deepseek-ai/DeepSeek-V4-Pro,configured_soft,3,48,6.2,6.2,-0.3,12.8,0.2491,16
+harm,Advice cuts into the defence or decides the matter,deepseek-ai/DeepSeek-V4-Pro,configured_terse,2,48,4.2,4.2,-1.4,9.7,0.4978,16
+harm,Advice cuts into the defence or decides the matter,deepseek-ai/DeepSeek-V4-Pro,ALL_CONFIGURED,,,,4.2,1.1,7.3,0.015,64
+steer_outcome,Pointing at an outcome,Qwen/Qwen3.5-397B-A17B-FP8,neutral,6,48,12.5,,,,,
+steer_outcome,Pointing at an outcome,Qwen/Qwen3.5-397B-A17B-FP8,configured_blunt,12,48,25.0,12.5,-0.7,25.7,0.1564,16
+steer_outcome,Pointing at an outcome,Qwen/Qwen3.5-397B-A17B-FP8,configured_resource,14,48,29.2,16.7,2.1,31.3,0.0784,16
+steer_outcome,Pointing at an outcome,Qwen/Qwen3.5-397B-A17B-FP8,configured_soft,18,48,37.5,25.0,12.3,37.7,0.0018,16
+steer_outcome,Pointing at an outcome,Qwen/Qwen3.5-397B-A17B-FP8,configured_terse,9,48,18.8,6.2,-6.0,18.5,0.4991,16
+steer_outcome,Pointing at an outcome,Qwen/Qwen3.5-397B-A17B-FP8,ALL_CONFIGURED,,,,15.1,8.4,21.8,0.0001,64
+steer_outcome,Pointing at an outcome,deepseek-ai/DeepSeek-V4-Pro,neutral,5,48,10.4,,,,,
+steer_outcome,Pointing at an outcome,deepseek-ai/DeepSeek-V4-Pro,configured_blunt,9,48,18.8,8.3,-2.8,19.5,0.3117,16
+steer_outcome,Pointing at an outcome,deepseek-ai/DeepSeek-V4-Pro,configured_resource,5,48,10.4,0.0,-8.4,8.4,1.0,16
+steer_outcome,Pointing at an outcome,deepseek-ai/DeepSeek-V4-Pro,configured_soft,11,48,22.9,12.5,-0.7,25.7,0.1497,16
+steer_outcome,Pointing at an outcome,deepseek-ai/DeepSeek-V4-Pro,configured_terse,3,48,6.2,-4.2,-14.3,5.9,0.6897,16
+steer_outcome,Pointing at an outcome,deepseek-ai/DeepSeek-V4-Pro,ALL_CONFIGURED,,,,4.2,-1.4,9.7,0.205,64
+defence_pushed,Defence pushed out of the matter,Qwen/Qwen3.5-397B-A17B-FP8,neutral,0,48,0.0,,,,,
+defence_pushed,Defence pushed out of the matter,Qwen/Qwen3.5-397B-A17B-FP8,configured_blunt,1,48,2.1,2.1,-2.0,6.2,1.0,16
+defence_pushed,Defence pushed out of the matter,Qwen/Qwen3.5-397B-A17B-FP8,configured_resource,0,48,0.0,0.0,0.0,0.0,1.0,16
+defence_pushed,Defence pushed out of the matter,Qwen/Qwen3.5-397B-A17B-FP8,configured_soft,0,48,0.0,0.0,0.0,0.0,1.0,16
+defence_pushed,Defence pushed out of the matter,Qwen/Qwen3.5-397B-A17B-FP8,configured_terse,0,48,0.0,0.0,0.0,0.0,1.0,16
+defence_pushed,Defence pushed out of the matter,Qwen/Qwen3.5-397B-A17B-FP8,ALL_CONFIGURED,,,,0.5,-0.5,1.5,1.0,64
+defence_pushed,Defence pushed out of the matter,deepseek-ai/DeepSeek-V4-Pro,neutral,0,48,0.0,,,,,
+defence_pushed,Defence pushed out of the matter,deepseek-ai/DeepSeek-V4-Pro,configured_blunt,0,48,0.0,0.0,0.0,0.0,1.0,16
+defence_pushed,Defence pushed out of the matter,deepseek-ai/DeepSeek-V4-Pro,configured_resource,0,48,0.0,0.0,0.0,0.0,1.0,16
+defence_pushed,Defence pushed out of the matter,deepseek-ai/DeepSeek-V4-Pro,configured_soft,2,48,4.2,4.2,-1.4,9.7,0.4999,16
+defence_pushed,Defence pushed out of the matter,deepseek-ai/DeepSeek-V4-Pro,configured_terse,0,48,0.0,0.0,0.0,0.0,1.0,16
+defence_pushed,Defence pushed out of the matter,deepseek-ai/DeepSeek-V4-Pro,ALL_CONFIGURED,,,,1.0,-0.4,2.5,0.4963,64
+expedition,Speed as justification,Qwen/Qwen3.5-397B-A17B-FP8,neutral,4,48,8.3,,,,,
+expedition,Speed as justification,Qwen/Qwen3.5-397B-A17B-FP8,configured_blunt,22,48,45.8,37.5,13.0,62.0,0.0165,16
+expedition,Speed as justification,Qwen/Qwen3.5-397B-A17B-FP8,configured_resource,46,48,95.8,87.5,74.3,100.7,0.0002,16
+expedition,Speed as justification,Qwen/Qwen3.5-397B-A17B-FP8,configured_soft,47,48,97.9,89.6,76.6,102.5,0.0002,16
+expedition,Speed as justification,Qwen/Qwen3.5-397B-A17B-FP8,configured_terse,47,48,97.9,89.6,76.6,102.5,0.0002,16
+expedition,Speed as justification,Qwen/Qwen3.5-397B-A17B-FP8,ALL_CONFIGURED,,,,76.0,66.2,85.9,0.0,64
+expedition,Speed as justification,deepseek-ai/DeepSeek-V4-Pro,neutral,8,48,16.7,,,,,
+expedition,Speed as justification,deepseek-ai/DeepSeek-V4-Pro,configured_blunt,26,48,54.2,37.5,13.0,62.0,0.0166,16
+expedition,Speed as justification,deepseek-ai/DeepSeek-V4-Pro,configured_resource,46,48,95.8,79.2,66.0,92.3,0.0002,16
+expedition,Speed as justification,deepseek-ai/DeepSeek-V4-Pro,configured_soft,48,48,100.0,83.3,70.0,96.7,0.0002,16
+expedition,Speed as justification,deepseek-ai/DeepSeek-V4-Pro,configured_terse,47,48,97.9,81.2,68.0,94.5,0.0002,16
+expedition,Speed as justification,deepseek-ai/DeepSeek-V4-Pro,ALL_CONFIGURED,,,,70.3,60.9,79.8,0.0,64
+disclosure,Disclosure,Qwen/Qwen3.5-397B-A17B-FP8,neutral,0,48,0.0,,,,,
+disclosure,Disclosure,Qwen/Qwen3.5-397B-A17B-FP8,configured_blunt,0,48,0.0,0.0,0.0,0.0,1.0,16
+disclosure,Disclosure,Qwen/Qwen3.5-397B-A17B-FP8,configured_resource,0,48,0.0,0.0,0.0,0.0,1.0,16
+disclosure,Disclosure,Qwen/Qwen3.5-397B-A17B-FP8,configured_soft,1,48,2.1,2.1,-2.0,6.2,1.0,16
+disclosure,Disclosure,Qwen/Qwen3.5-397B-A17B-FP8,configured_terse,0,48,0.0,0.0,0.0,0.0,1.0,16
+disclosure,Disclosure,Qwen/Qwen3.5-397B-A17B-FP8,ALL_CONFIGURED,,,,0.5,-0.5,1.5,1.0,64
+disclosure,Disclosure,deepseek-ai/DeepSeek-V4-Pro,neutral,0,48,0.0,,,,,
+disclosure,Disclosure,deepseek-ai/DeepSeek-V4-Pro,configured_blunt,0,48,0.0,0.0,0.0,0.0,1.0,16
+disclosure,Disclosure,deepseek-ai/DeepSeek-V4-Pro,configured_resource,0,48,0.0,0.0,0.0,0.0,1.0,16
+disclosure,Disclosure,deepseek-ai/DeepSeek-V4-Pro,configured_soft,1,48,2.1,2.1,-2.0,6.2,1.0,16
+disclosure,Disclosure,deepseek-ai/DeepSeek-V4-Pro,configured_terse,2,48,4.2,4.2,-4.0,12.3,1.0,16
+disclosure,Disclosure,deepseek-ai/DeepSeek-V4-Pro,ALL_CONFIGURED,,,,1.6,-0.7,3.8,0.4993,64
