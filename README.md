@@ -4,6 +4,9 @@ Judicial dual-condition behavioural testing. A benchmark for measuring how much 
 
 Run a frozen battery of case files twice: once under a neutral system prompt, once under the prompt you intend to deploy. The delta is the finding. Judge both sets with a model held outside your roster, one question per pass, two judges, and report the disagreement.
 
+New here? Start with [How the measurement works](docs/how-it-works.md) ([PDF](docs/how-it-works.pdf)).  
+Ready to run it? [Running it yourself](docs/run-it-yourself.md) ([PDF](docs/run-it-yourself.pdf)).
+
 This is CAID-J v1.0. Derived from the [CAID protocol](https://github.com/revenue7-eng/caid-benchmark) (MIT), which does the same for commercial deployments. What differs, and why the commercial violation definition does not transfer, is set out in [`PROTOCOL.md`](PROTOCOL.md) §1a.
 
 **Licence:** MIT.
