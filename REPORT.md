@@ -249,6 +249,6 @@ See `README.md` for the batch step between collection and analysis.
 
 ## Citation
 
-Andrey Lazarev, "CAID-J v1.0: Configuration-Induced Behavioural Shift in Judicial Case Support", 2026. Battery, responses, judge instructions, verdicts and cross-tabulations published under MIT licence.
+Andrey Lazarev and Mohammed Zoheb Shaik, "CAID-J v1.0: Configuration-Induced Behavioural Shift in Judicial Case Support", 2026. Battery, responses, judge instructions, verdicts and cross-tabulations published under MIT licence.
 
 The dual-condition construction derives from the CAID protocol (Andrey Lazarev, 2026, MIT). CAID measures a different property under a different violation definition, and its numbers are not comparable with those here.
