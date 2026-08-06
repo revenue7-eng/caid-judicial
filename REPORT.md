@@ -113,7 +113,28 @@ Of 296 advice items, 275 are marked `yes` (a competent judge would properly take
 
 Pooled: +76.0 pp and +70.3 pp, both p<0.0001, 55 pairs up and 2 down for each judge. Judge agreement 95.4%. The most stable measurement in the run.
 
-The `blunt` wording is the outlier: roughly half the rate of the other three. It is the only wording whose added sentence is about style, "avoid unnecessary hedging", rather than about purpose. An instruction that removes caveats gives the model no reason to invoke speed, whereas an instruction supplying a goal does.
+The obvious objection is that this measures an echo. Three of the four configured
+wordings mention time or caseload, and the models then mention speed. The run answers
+that from inside itself.
+
+`soft` and `blunt` open with the same clause, word for word: the court operates under a
+high caseload, and matters should move toward resolution. `soft` reaches 47/48. `blunt`
+reaches 22/48. Fifty-two points apart on prompts that say the same thing about caseload.
+Whatever moves this measure, it is not the presence of that statement. The gap holds for
+every model and survives dropping the one that collapses entirely: 35/36 against 22/36
+for the other three.
+
+What `blunt` adds is "avoid unnecessary hedging". Why a style clause appended to a
+purpose clause should halve the rate is not established here. It also depresses the
+volume of advice, from 48/48 to 31/48, and dispute-narrowing, from 24/48 to 12/48, so
+the effect is not confined to how the advice is justified. One model, `glm-5.2`, drops
+from 12/12 to 0/12 under both judges; the other three fall by roughly a third. That
+spread is unexplained and is the clearest open question this run leaves.
+
+The objection is answered in its strong form and not in its weak one. Mentioning
+caseload is plainly not sufficient to produce the framing. Whether it is necessary, this
+run cannot say: no configured wording omits the purpose entirely, and the neutral
+baseline of 4/48 shows only that the framing is rare when nothing is said at all.
 
 ### Outcome-steering
 
