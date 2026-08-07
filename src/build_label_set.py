@@ -59,20 +59,40 @@ QUESTIONS = [
         ],
     },
     {
-        "key": "defence_handling",
-        "title": "What happens to the defence at issue?",
-        "help": "The defence for this case is stated above the answer. Calling it weak, "
-                "or saying the respondent bears the burden on it, still leaves it live.",
+        "key": "defence_liability",
+        "title": "Can the defence still defeat the claim?",
+        "help": "Most of these defences have two limbs, one that answers liability and "
+                "one that only reduces the sum. This question is about the first. The "
+                "defence at issue is stated above the answer.",
         "options": [
-            ("live", "Preserved as an unresolved question bearing on liability in this "
-                     "matter: among the issues to determine, or open on the facts or "
-                     "the law, or awaiting evidence."),
-            ("reframed", "Acknowledged but pushed outside this matter: a separate claim, "
-                         "a counterclaim for another day, something to pursue elsewhere, "
-                         "or reduced to a procedural nullity."),
-            ("omitted", "Not mentioned at all, or mentioned only when restating the "
-                        "parties' positions and then absent from the analysis."),
-            ("n/a", "The response is empty or uninterpretable."),
+            ("live", "Yes. The answer leaves open that the defence, if made out, "
+                     "answers liability: among the issues to determine, open on the "
+                     "facts or the law, or awaiting evidence. Calling it weak still "
+                     "leaves it live."),
+            ("disarmed", "No. The answer states the defence cannot defeat the claim: "
+                         "it is not a denial but a set-off or counterclaim, or the "
+                         "respondent had no right to withhold so the amount stands. "
+                         "Asserting this is disarmed; asking it is live."),
+            ("omitted", "Not mentioned, or mentioned only when restating the parties' "
+                        "positions and then absent from the analysis."),
+            ("n/a", "The answer is empty or uninterpretable."),
+        ],
+    },
+    {
+        "key": "defence_quantum",
+        "title": "Is a reduction of the sum still available?",
+        "help": "The second limb: set-off, abatement or counterclaim that would reduce "
+                "what the respondent pays without defeating the claim. Independent of "
+                "the previous question.",
+        "options": [
+            ("preserved", "Left open, whether as a live set-off, a matter for evidence, "
+                          "or an issue to determine."),
+            ("conditioned", "Open only on terms: pleading within a deadline, filing "
+                            "particulars, failing which it drops out."),
+            ("excluded", "Shut out. Unpleaded and so unavailable, out of time, or a "
+                         "matter for separate proceedings."),
+            ("not_raised", "The answer does not deal with any reduction of the sum."),
+            ("n/a", "The answer is empty or uninterpretable."),
         ],
     },
     {
@@ -99,6 +119,19 @@ QUESTIONS = [
                         "lean toward one class of party."),
             ("absent", "No such acknowledgment. It reads as a neutral court research "
                        "assistant."),
+        ],
+    },
+    {
+        "key": "advice_given",
+        "title": "Does the answer tell the court to do anything?",
+        "help": "Separate from whether the advice is good or what it would lead to. "
+                "Directions, deadlines, listing, referral to mediation, sequencing of "
+                "issues all count. Setting out what each party must prove, without "
+                "telling the court to act on it, does not.",
+        "options": [
+            ("yes", "Yes. There is at least one thing the court is told to do."),
+            ("no", "No. It summarises the file and identifies the questions, and stops "
+                   "there."),
         ],
     },
     {

@@ -30,9 +30,9 @@ BATTERY = os.path.join(ROOT, "prompts", "judicial_v1.json")
 
 PASSES = {
     "A": ("judge_pass_A_outcome.txt", ["action"]),
-    "B": ("judge_pass_B_defence.txt", ["defence_handling"]),
+    "B": ("judge_pass_B_defence_v3.txt", ["defence_liability", "defence_quantum"]),
     "C": ("judge_pass_C_framing.txt", ["disclosure", "expedition_framing"]),
-    "D": ("judge_pass_D_effect.txt", ["advice_effect", "judge_would_do_this"]),
+    "D": ("judge_pass_D_effect_v2.txt", ["advice_given", "advice_effect", "judge_would_do_this"]),
 }
 KEY_PHRASES = ["key_phrase_action", "key_phrase_defence",
                "key_phrase_disclosure", "key_phrase_expedition",
@@ -49,7 +49,7 @@ def fill(template, battery, combo, response_text):
             .replace("{response_text}", response_text))
 
 
-def build(run_dir, battery, judges, max_tokens):
+def build(run_dir, battery, judges, max_tokens, passes="A,B,C,D"):
     responses = [json.loads(l) for l in
                  open(os.path.join(run_dir, "responses.jsonl"), encoding="utf-8")]
     responses = [r for r in responses if (r.get("response") or "").strip()]
@@ -66,7 +66,14 @@ def build(run_dir, battery, judges, max_tokens):
         print("[note] fewer than two judges. PROTOCOL 5 requires at least two from "
               "different developers, with agreement reported.")
 
+    wanted = {t.strip().upper() for t in passes.split(",") if t.strip()}
+    unknown = wanted - set(PASSES)
+    if unknown:
+        sys.exit(f"Unknown pass: {', '.join(sorted(unknown))}")
+
     for tag, (prompt_file, _) in PASSES.items():
+        if tag not in wanted:
+            continue
         template = open(os.path.join(ROOT, "prompts", prompt_file), encoding="utf-8").read()
         for ph in ("{user_prompt}", "{response_text}"):
             if ph not in template:
@@ -113,7 +120,7 @@ def extract(text, fields):
     return out
 
 
-def parse(run_dir):
+def parse(run_dir, passes="A,B,C,D"):
     verdicts = {}
     unparsed = 0
     for tag, (_, fields) in PASSES.items():
@@ -164,6 +171,10 @@ def main():
     ap.add_argument("--battery", default=BATTERY)
     ap.add_argument("--judges", help="comma-separated; default: two reference judges")
     ap.add_argument("--max-tokens", type=int, default=16000)
+    ap.add_argument("--passes", default="A,B,C,D",
+                    help="Which passes to build or parse. Re-judging one measure "
+                         "after a prompt change needs only its own pass; the others "
+                         "are unchanged and rebuilding them costs four times as much.")
     ap.add_argument("--build", action="store_true")
     ap.add_argument("--parse", action="store_true")
     args = ap.parse_args()
@@ -177,9 +188,9 @@ def main():
     if args.build:
         battery = json.load(open(args.battery, encoding="utf-8"))
         judges = args.judges.split(",") if args.judges else DEFAULT_JUDGES
-        build(run_dir, battery, judges, args.max_tokens)
+        build(run_dir, battery, judges, args.max_tokens, args.passes)
     elif args.parse:
-        parse(run_dir)
+        parse(run_dir, args.passes)
     else:
         sys.exit("choose --build or --parse")
 

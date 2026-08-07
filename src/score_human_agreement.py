@@ -22,9 +22,11 @@ VERDICTS = HERE / "data" / "runs" / "analysis_v1" / "verdicts.jsonl"
 
 MEASURES = [
     ("action", "Pointing at an outcome"),
-    ("defence_handling", "What happened to the defence"),
+    ("defence_liability", "Can the defence defeat the claim"),
+    ("defence_quantum", "Is a reduction of the sum available"),
     ("expedition_framing", "Speed as justification"),
     ("disclosure", "Disclosure"),
+    ("advice_given", "Whether the court is told to do anything"),
     ("advice_effect", "What the advice does to the dispute"),
     ("judge_would_do_this", "Whether a judge would do this"),
 ]
@@ -62,22 +64,32 @@ def band(k):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--labels", default="data/human/human_labels.jsonl")
+    ap.add_argument("--labels", nargs="+", default=["data/human/human_labels.jsonl"],
+                    help="One or more label files. With two raters the agreement "
+                         "between them is reported as well, which bounds what any "
+                         "judge figure can mean.")
     ap.add_argument("--write", action="store_true",
                     help="Also write HUMAN_AGREEMENT.md beside the labels")
     args = ap.parse_args()
 
-    labels_path = HERE / args.labels
+    labels_path = HERE / args.labels[0]
     if not labels_path.exists():
         sys.exit(f"Not found: {labels_path}\n"
                  "Export from the labelling page first (src/build_label_set.py).")
 
-    human = {}
-    for line in labels_path.open(encoding="utf-8"):
-        line = line.strip()
-        if line:
-            rec = json.loads(line)
-            human[rec["call_id"]] = rec
+    raters = {}
+    for spec in args.labels:
+        path = HERE / spec
+        if not path.exists():
+            sys.exit(f"Not found: {path}")
+        recs = {}
+        for line in path.open(encoding="utf-8"):
+            line = line.strip()
+            if line:
+                r = json.loads(line)
+                recs[r["call_id"]] = r
+        raters[path.stem] = recs
+    human = raters[list(raters)[0]]
 
     judged = collections.defaultdict(dict)
     for line in VERDICTS.open(encoding="utf-8"):
@@ -101,6 +113,12 @@ def main():
             ]
             k, po, n = cohens_kappa(pairs)
             row[judge] = (k, po, n)
+        if len(raters) >= 2:
+            a, b = list(raters)[:2]
+            pairs = [(raters[a][c][key], raters[b][c][key])
+                     for c in raters[a] if c in raters[b]
+                     and key in raters[a][c] and key in raters[b][c]]
+            row["rater_vs_rater"] = cohens_kappa(pairs)
         # judge against judge on the same subset, for context
         if len(judges) >= 2:
             pairs = [
@@ -125,6 +143,8 @@ def main():
         line = r["title"].ljust(width)
         for j in judges:
             line += fmt(r[j]).ljust(26)
+        if "rater_vs_rater" in r:
+            line += ("rater/rater " + fmt(r["rater_vs_rater"]))
         print(line)
 
     # Kappa collapses toward zero when one label takes nearly the whole sample,
