@@ -12,3 +12,8 @@ __pycache__/
 *_RU.md
 HANDOFF_*.md
 docs/[0-9][0-9]_*.md
+
+# Batch job files are regenerated on demand and belong to a run, not to the repo
+data/runs/*/batch_pass_*.jsonl
+data/runs/*/id_map_pass_*.json
+data/runs/*/output_pass_*.jsonl
