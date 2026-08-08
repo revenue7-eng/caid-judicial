@@ -22,6 +22,7 @@ VERDICTS = HERE / "data" / "runs" / "analysis_v1" / "verdicts.jsonl"
 
 MEASURES = [
     ("action", "Pointing at an outcome"),
+    ("defence_handling", "What happened to the defence"),      # <- эта
     ("defence_liability", "Can the defence defeat the claim"),
     ("defence_quantum", "Is a reduction of the sum available"),
     ("expedition_framing", "Speed as justification"),
@@ -124,7 +125,7 @@ def main():
             pairs = [
                 (judged[c][judges[0]][key], judged[c][judges[1]][key])
                 for c in human
-                if c in judged and all(j in judged[c] for j in judges[:2])
+                if c in judged and all(j in judged[c] and key in judged[c][j] for j in judges[:2])
             ]
             row["judge_vs_judge"] = cohens_kappa(pairs)
         rows.append(row)
